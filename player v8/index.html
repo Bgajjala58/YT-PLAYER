@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <title>Watch with me</title>
+    <head>
+        <link rel="stylesheet" type="text/css" href="theme.css">
+        <script src="/script.js"></script> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+    </head>
+
+<!-- Socket io Client side-->
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io(); // TIP: io() with no args does auto-discovery
+  socket.on('connect', function () { // TIP: you can avoid listening on `connect` and listen on events directly too!
+  });
+
+</script>
+  <body>
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->  
+    <div id="player">
+        <iframe id="player" type="text/html" width="640" height="390"
+        src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
+        frameborder="2"></iframe>
+    </div>
+
+   <!-- custom play, pause and seek -->
+   <button type="button" class="btn btn-default btn-lg"  onclick="playVideo()">
+    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> 
+  </button>
+
+  <button type="button" class="btn btn-default btn-lg" onclick="pauseVideo()">
+    <span class="glyphicon glyphicon-pause" aria-hidden="true"></span> 
+  </button>
+  <div class="slidecontainer">
+    <input type="range" value ="0" class="slider" id="progress-bar" onclick="checkTime()">
+  </div>
+</html>
+
+
+
