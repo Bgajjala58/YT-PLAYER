@@ -12,7 +12,7 @@ Socket.io (Using NPM) - https://www.npmjs.com/package/express
 
 ### Program startup
 1. Clone: git clone https://github.com/Bgajjala58/YT-PLAYER.git
-2. cd YT-SYNC
+2. cd YT-PLAYER
 3. Install Node.js (brew): brew install node  
 4. Install Express: npm install express
 5. Install Socket.io: npm install socket.io
