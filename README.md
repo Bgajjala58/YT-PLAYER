@@ -27,6 +27,8 @@ Files included:
    - <b>script.js</b>
    - <b>theme.js</b>
 
-# Program Test:
-View test.mov 
+### Program Test:
+Note: Running locally causes lag
+https://imgur.com/XRvWAf0
+
 
