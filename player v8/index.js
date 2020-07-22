@@ -22,19 +22,19 @@ io.on('connection', function(socket){
       socket.on('Pausebutton', function (type, time) {
                 console.log(type);
                 console.log(time);
-                socket.broadcast.emit('Pausebutton', type, time);
+                io.local.emit('Pausebutton', type, time);
                 });
       
       socket.on('Playbutton', function (type, time) {
                 console.log(type);
                 console.log(time);
-                socket.broadcast.emit('Playbutton', type, time);
+                io.local.emit('Playbutton', type, time);
                 });
       
       socket.on('ToSeek', function (type, time) {
                 console.log(type);
                 console.log(time);
-                socket.broadcast.emit('ToSeek', type, time);
+                io.local.emit('ToSeek', type, time);
                 });
 });
 

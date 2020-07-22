@@ -1,62 +1,64 @@
-/* --------------------------------------- YOUTUBE API ---------------------------------------*/
+/* Youtube API */
+
 function progress(percent, $element) {
     var progressBarWidth = percent * $element.width() / 100;
-  
-  // $element.find('div').animate({ width: progressBarWidth }, 500).html(percent + "%&nbsp;");
-  
     $element.find('div').animate({ width: progressBarWidth });
   } 
 
-// 2. This code loads the IFrame Player API code asynchronously.
+/* IFrame Player API */
  var tag = document.createElement('script');
  tag.src = "https://www.youtube.com/iframe_api";
  var firstScriptTag = document.getElementsByTagName('script')[0];
  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
- // 3. This function creates an <iframe> (and YouTube player)
- //    after the API code downloads.
+
+ /* <iframe> (and YouTube player) */
  var player;
  function onYouTubeIframeAPIReady() {
    player = new YT.Player('player', {
-    //Playervars to take out time and play pause button 
-     
      height: '390',
      width: '640',
      videoId: 'NMDWCDvCGjI',
-   
      events: {
        'onReady': onPlayerReady,
        'onStateChange': onPlayerStateChange
-     }
+     },
+     playerVars: {
+      'autoplay': 1,
+      'controls': 0,
+      'disablekb': 1,
+      'fs': 0,
+      'loop': 1,
+      'modestbranding': 1,
+      'rel': 0,
+      'showinfo': 0,
+      'mute': 0,
+      'autohide': 1
+
+    }
+    
    });
  }
- // 4. The API will call this function when the video player is ready.
- function onPlayerReady(event) {
 
-  event.target.playVideo();
+ /* Player is ready */
+ function onPlayerReady(event) {
   setDuration_seeker();
   setInterval(updateProgressBar, 1000);
+  event.target.playVideo();
 
        }
- // 5. The API calls this function when the player's state changes.
- //    The function indicates that when playing a video (state=1),
- //    the player should play for six seconds and then stop.
- var done = false;
  function onPlayerStateChange(event) { 
   updateProgressBar();
   
  } 
  
-/* --------------------------------------- CUSTOM FUNCTIONS ---------------------------------------*/
-
-
+/* Custom Functions*/
 
 function updateProgressBar() {
     var progressBar = document.getElementById('progress-bar');
     progressBar.value = player.getCurrentTime();
 }
 
- //TO Play VIDEO ON CLICK (Play button)
- function playVideo(){
+function playVideo(){
     player.playVideo();
     socket.emit('Playbutton', 'Play' , player.getCurrentTime().toString());
     socket.on('Playbutton',function (type,time){
@@ -64,27 +66,26 @@ function updateProgressBar() {
    });
    
  }
- //TO PAUSE VIDEO ON CLICK (Pause button)
- function pauseVideo(){
-   
+
+function pauseVideo(){
      player.pauseVideo();
      console.log(player.getCurrentTime());
      socket.emit('Pausebutton', 'Pause' , player.getCurrentTime().toString());
      socket.on('Pausebutton',function (type,time){
-           console.log(player.getCurrentTime());
+     console.log(player.getCurrentTime());
             player.pauseVideo(); 
             
    });
    
  }
 
- function setDuration_seeker(){
-
+function setDuration_seeker(){
   var duration = player.getDuration().toString();
   var progressBar = document.getElementById('progress-bar').max = duration;
    
  }
- function checkTime(){
+
+function checkTime(){
   var slider = document.getElementById('progress-bar');
   var temp = slider.value
   player.seekTo(temp,true);
