@@ -6,8 +6,8 @@ Author: Bharath Gajjala
 This is a web app to sync Youtube videos 
 
 ### Dependencies
-Node.js - https://nodejs.org/en/download/package-manager/
-Express (Using NPM) - https://www.npmjs.com/package/express
+Node.js - https://nodejs.org/en/download/package-manager/ <br>
+Express (Using NPM) - https://www.npmjs.com/package/express <br>
 Socket.io (Using NPM) - https://www.npmjs.com/package/express
 
 ### Program startup
